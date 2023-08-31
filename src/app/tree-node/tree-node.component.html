@@ -1,0 +1,21 @@
+<div class="cds--tree-node__label" [ngStyle]="ngStyleObj" (click)="onSelectedNode()">
+    <ng-container *ngIf="!node.children">
+        {{ node.label }}
+    </ng-container>
+    <ng-container *ngIf="node.children">
+        <span class="cds--tree-parent-node__toggle" (click)="toggleExpanded()">
+            <svg focusable="false" xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="16" height="16" viewBox="0 0 32 32" aria-hidden="true" class="cds--tree-parent-node__toggle-icon"
+                [ngClass]="{'cds--tree-parent-node__toggle-icon--expanded': node.isExpanded}">
+                <path d="M24 12L16 22 8 12z"></path>
+            </svg>
+        </span>
+        <span class="cds--tree-node__label__details">{{ node.label }}</span>
+    </ng-container>
+</div>
+<ul
+    treeView 
+    *ngIf="node.isExpanded && node.children" 
+    class="cds--tree-node__children"
+    [treeViewChildern]="node.children">
+</ul>
+

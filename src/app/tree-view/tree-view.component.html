@@ -1,0 +1,13 @@
+<ng-container *ngFor="let node of treeViewChildern">
+    <li treeNode 
+        class="cds--tree-node lsp-tree-node-li" 
+        [ngClass]="{
+            'cds--tree-node--disabled': node.disabled, 
+            'cds--tree-leaf-node': !node.children, 
+            'cds--tree-parent-node': node.children, 
+            'cds--tree-node--active cds--tree-node--selected': node.id == treeViewService.getSelectedNode()}" 
+        [node]="node"
+        (onSelect)="onSelectNode($event)"
+        (onToggle)="onToggleNode($event)"
+    ></li>
+</ng-container>
